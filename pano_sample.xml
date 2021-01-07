@@ -1,0 +1,25 @@
+﻿<krpano>
+
+	<!-- view settings -->
+	<control usercontrol="mouse" mouse="drag" touch="drag" dragrelative="false" draginertia="1.0"/> <!-- Tiling 이미지 관성 법칙 설정-->
+	<view hlookat="0" vlookat="0" maxpixelzoom="0.0" fovmax="150" limitview="auto" />
+
+
+	<preview url="assets/imgs/preview.jpg" />
+
+	<image type="CUBE" multires="true" tilesize="512">
+		<level tiledimagewidth="2546" tiledimageheight="2546">
+			<cube url="assets/imgs/%s/l4/%v/l4_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="1280" tiledimageheight="1280">
+			<cube url="assets/imgs/%s/l3/%v/l3_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="640" tiledimageheight="640">
+			<cube url="assets/imgs/%s/l2/%v/l2_%s_%v_%h.jpg" />
+		</level>
+		<level tiledimagewidth="256" tiledimageheight="256">
+			<cube url="assets/imgs/%s/l1/%v/l1_%s_%v_%h.jpg" />
+		</level>
+	</image>
+
+</krpano>
