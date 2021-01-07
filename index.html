@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>krpano sample</title>
-    
+  <title>krpano sample</title>
+  <script src="assets/js/krpano.js"></script>
 </head>
 
 <body>
 
-    <script src="assets/js/krpano.js"></script>
-
-    <div id="pano" style="width:600px; height:400px;"></div>
+    <div id="pano" style="width:600px; height:400px;">
+      <script>
+        embedpano({swf:"krpano.swf", xml:"pano.xml", target:"pano"});
+      </script>
+    </div>
     
-    <script>
-      embedpano({swf:"krpano.swf", xml:"pano.xml", target:"pano"});
-    </script>
 </body>
 </html>
