@@ -23,8 +23,11 @@
     <div id="popup-content"></div>
     </div>
 
-
+  
   <script type="text/javascript">
+    const LONGITUDE = 126.881676;    //Map Position
+    const LATITUDE = 37.518072;
+
     let map = new ol.Map({   //Draw Map
       target: 'map',
       controls: ol.control.defaults({ attribution: false }),
@@ -34,7 +37,7 @@
         })
       ],
       view: new ol.View({
-        center: ol.proj.fromLonLat([126.91969, 37.55969]),
+        center: ol.proj.fromLonLat([LONGITUDE, LATITUDE]),
         zoom: 17,
         maxZoom: 20
       })
@@ -45,7 +48,7 @@
      source: new ol.source.Vector({
          features: [
              new ol.Feature({
-                 geometry: new ol.geom.Point(ol.proj.fromLonLat([126.91969, 37.55969]))
+                 geometry: new ol.geom.Point(ol.proj.fromLonLat([LONGITUDE, LATITUDE]))
              })
          ]
      })
@@ -83,7 +86,6 @@
          closer.blur();
      }
  });
-    
     
   </script>
 </body>
