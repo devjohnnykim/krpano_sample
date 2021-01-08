@@ -18,6 +18,14 @@ body {
 }
 
 .map {
-    height: 300px;
-    width: 300px;
-  }
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    height: 330px;
+    width: 330px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid black;
+    overflow: hidden;
+    
+}
