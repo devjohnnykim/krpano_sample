@@ -2,23 +2,24 @@
 <html>
 <head>
   <title>krpano sample</title>
-  <script src="assets/js/krpano.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
+  <script src="assets/js/krpano.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
 </head>
 
 <body>
-  
+<!-- Imbedding KrPano -->
   <div id="pano">
     <script>
       embedpano({ xml:"pano.xml", target:"pano"});
     </script>
   </div>
   
+<!-- Add map -->
   <div id="map" class="map"></div>
   <script type="text/javascript">
-    var map = new ol.Map({
+    let map = new ol.Map({
       target: 'map',
       controls: ol.control.defaults({ attribution: false }),
       layers: [
@@ -28,9 +29,24 @@
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat([126.91969, 37.55969]),
-        zoom: 17
+        zoom: 17,
+        maxZoom: 20
       })
     });
+    
+
+    let layer = new ol.layer.Vector({
+     source: new ol.source.Vector({
+         features: [
+             new ol.Feature({
+                 geometry: new ol.geom.Point(ol.proj.fromLonLat([126.91969, 37.55969]))
+             })
+         ]
+     })
+    });
+    map.addLayer(layer);
+    
+  
   </script>
 </body>
 </html>
