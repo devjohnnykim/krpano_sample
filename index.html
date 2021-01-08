@@ -16,10 +16,16 @@
     </script>
   </div>
   
-<!-- Add map -->
+<!-- Add Map , Popup-->
   <div id="map" class="map"></div>
+  <div id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
+    </div>
+
+
   <script type="text/javascript">
-    let map = new ol.Map({
+    let map = new ol.Map({   //Draw Map
       target: 'map',
       controls: ol.control.defaults({ attribution: false }),
       layers: [
@@ -35,7 +41,7 @@
     });
     
 
-    let layer = new ol.layer.Vector({
+    let layer = new ol.layer.Vector({     //Draw Marker
      source: new ol.source.Vector({
          features: [
              new ol.Feature({
@@ -45,8 +51,40 @@
      })
     });
     map.addLayer(layer);
+
+
+    let container = document.getElementById('popup');     // Initialize Popup
+    let content = document.getElementById('popup-content');
+    let closer = document.getElementById('popup-closer');
+
+    let overlay = new ol.Overlay({
+     element: container,
+     autoPan: true,
+     autoPanAnimation: {
+         duration: 250
+     }
+ });
+    map.addOverlay(overlay);
+
+    closer.onclick = function() {
+    overlay.setPosition(undefined);
+    closer.blur();
+    return false;
+    };
+
+    map.on('singleclick', function (event) {    // Add Popup Function
+     if (map.hasFeatureAtPixel(event.pixel) === true) {
+         let coordinate = event.coordinate;
+
+         content.innerHTML = '<b>Hello world!</b><br />I am a popup.';
+         overlay.setPosition(coordinate);
+     } else {
+         overlay.setPosition(undefined);
+         closer.blur();
+     }
+ });
     
-  
+    
   </script>
 </body>
 </html>
