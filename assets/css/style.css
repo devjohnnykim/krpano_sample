@@ -11,4 +11,11 @@ body {
 #pano {
     width: 100vw; 
     height: 100vh;
+    z-index: 1;
 }
+
+.map {
+    height: 300px;
+    width: 300px;
+    z-index: 2;
+  }
